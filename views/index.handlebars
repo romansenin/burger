@@ -1,1 +1,37 @@
-<p>Successfully connected to server!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <img src="assets/burger.jpg" alt="burger">
+      <h1>Burger Eater!</h1>
+    </div>
+  </div>
+
+<div class="col-m-6 text-center">
+  <div class="row">
+    {{#each burgers}}
+      {{#unless this.devoured}}
+        <div class="col-xs-9 text-center">
+          <pre>{{this.id}}. {{this.burger_name}}</pre>
+        </div>
+        <div class="col-xs-3 text-center">
+          <button class="btn btn-default">DEVOUR IT!</button>
+        </div>
+      {{/unless}}
+    {{/each}}
+  </div>
+</div>
+
+
+  <div class="intro">
+
+
+  </div>
+
+
+
+  <form action="/add" method="POST">
+    <textarea name="add-burger" id="add" cols="30" rows="10"></textarea>
+    <button class="btn btn-primary">Submit</button>
+  </form>
+  <h4>Enter a burger you want to eat! Click the "Submit" button.</h4>
+</div>

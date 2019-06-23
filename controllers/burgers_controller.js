@@ -6,7 +6,10 @@ let router = express.Router();
 let burger = require("../models/burger.js");
 
 router.get("/", function(req, res) {
-  res.render("index");
+  burger.selectAll(function(burgers) {
+    console.log(burgers);
+    res.render("index");
+  });
 });
 
 module.exports = router;

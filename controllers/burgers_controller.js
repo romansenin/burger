@@ -7,7 +7,6 @@ let burger = require("../models/burger.js");
 
 router.get("/", function(req, res) {
   burger.selectAll(function(burgers) {
-    console.log(burgers);
     res.render("index", {burgers});
   });
 });

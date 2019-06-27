@@ -1,33 +1,53 @@
 <div class="container">
-  <div class="row intro">
-    <div class="col-xs-12">
-      <img src="assets/burger.jpg" alt="burger">
-      <h1>Burger Eater!</h1>
+  <div class="row mt-4 text-center">
+    <div class="col-12">
+      <img id="burger-image" class="img-fluid" src="assets/burger.jpg" alt="burger">
+      <h2>Burger Eater!</h2>
     </div>
   </div>
 
+  <div class="row mt-5">
+    <div class="col-12 col-md-5">
+      {{#each burgers}}
+      {{#unless this.devoured}}
+      <div class="row box">
+        <div class="col-6">
+          <pre>{{this.id}}. {{this.burger_name}}</pre>
+        </div>
+        <div class="col-6 text-right">
+          <button>DEVOUR IT!</button>
+        </div>
+      </div>
 
-  <div class="col-xs-12 col-md-6">
-    {{#each burgers}}
-    {{#unless this.devoured}}
-    <div class="row">
-      <div class="col-xs-9">
-        <pre>{{this.id}}. {{this.burger_name}}</pre>
-      </div>
-      <div class="col-xs-3">
-        <button class="btn btn-default">DEVOUR IT!</button>
-      </div>
+      {{/unless}}
+      {{/each}}
     </div>
+    <div class="col-12 col-md-5 offset-md-2 eaten">
+      {{#each burgers}}
+      {{#if this.devoured}}
+      <div class="row box">
+        <div class="col-12">
+          <pre>{{this.id}}. {{this.burger_name}}</pre>
+        </div>
+      </div>
 
-    {{/unless}}
-    {{/each}}
+      {{/if}}
+      {{/each}}
+    </div>
   </div>
 
-  <div class="col-xs-12">
-    <form action="/add" method="POST">
-      <textarea name="add-burger" id="add" cols="30" rows="10"></textarea>
-      <button class="btn btn-primary">Submit</button>
-    </form>
-    <h4>Enter a burger you want to eat! Click the "Submit" button.</h4>
+  <div class="row mt-5 text-center">
+    <div class="col-12">
+      <h6>Enter a burger you want to eat!</h6>
+    </div>
+  </div>
+
+  <div class="row mt-2 mb-4 text-center">
+    <div class="col-8 offset-2">
+      <form action="/add" method="POST">
+        <textarea name="add-burger" id="add"></textarea>
+        <button class="btn btn-primary mt-2">Submit</button>
+      </form>
+    </div>
   </div>
 </div>

@@ -44,7 +44,7 @@
 
   <div class="row mt-2 mb-4 text-center">
     <div class="col-8 offset-2">
-      <form action="/add" method="POST">
+      <form action="/add" method="POST" autocomplete="off">
         <input name="add-burger" id="add"></input>
         <button class="btn btn-primary mt-2">Submit</button>
       </form>
@@ -54,10 +54,15 @@
 
 <script>
   $(".box").on("click", "button", function (event) {
-    $.ajax({
-      url: '/eat',
+    $.ajax("/eat", { 
       type: 'PUT',
       data: { id: $(this).attr("data-id") }
-    });
+    }).then(
+      function() {
+        console.log("changed devoured to true");
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
   });
 </script>

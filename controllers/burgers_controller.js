@@ -13,14 +13,11 @@ router.get("/", function(req, res) {
 
 router.put("/eat", function(req, res) {
   burger.updateOne({ devoured: true }, "id = " + req.body.id, function(result) {
-    console.log(result);
-    if (result.changedRows == 0) {
-      console.log("in here");
+    if (result.affectedRows == 0) {
       // If no rows were changed, then the ID must not exist, so 404
       return res.status(404).end();
     } else {
-      console.log("in here 2");
-      res.redirect("/");
+      res.status(200).end();
     }
   });
 });

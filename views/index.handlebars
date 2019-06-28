@@ -15,7 +15,7 @@
           <pre>{{this.id}}. {{this.burger_name}}</pre>
         </div>
         <div class="col-6 text-right">
-          <button>DEVOUR IT!</button>
+          <button data-id={{this.id}}>DEVOUR IT!</button>
         </div>
       </div>
 
@@ -51,3 +51,19 @@
     </div>
   </div>
 </div>
+
+<script>
+  $(".box").on("click", "button", function (event) {
+    console.log("you clicked the devour button with id: " + $(this).attr("data-id"));
+    $.ajax({
+      url: '/eat',
+      type: 'PUT',
+      data: {id: $(this).attr("data-id")},
+      success: function (result) {
+        // Do something with the result
+        console.log(result);
+        res.redirect("/");
+      }
+    });
+  })
+</script>

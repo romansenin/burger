@@ -7,7 +7,7 @@
   </div>
 
   <div class="row mt-5">
-    <div class="col-12 col-md-5">
+    <div class="col-12 col-lg-5">
       {{#each burgers}}
       {{#unless this.devoured}}
       <div class="row box">
@@ -22,7 +22,7 @@
       {{/unless}}
       {{/each}}
     </div>
-    <div class="col-12 col-md-5 offset-md-2 eaten">
+    <div class="col-12 col-lg-5 offset-lg-2 eaten">
       {{#each burgers}}
       {{#if this.devoured}}
       <div class="row box">
@@ -54,18 +54,10 @@
 
 <script>
   $(".box").on("click", "button", function (event) {
-    console.log("you clicked the devour button with id: " + $(this).attr("data-id"));
     $.ajax({
       url: '/eat',
       type: 'PUT',
-      data: {id: $(this).attr("data-id")},
-      success: function (result) {
-        // Do something with the result
-        console.log(result);
-        $.get("/", function(data) {
-          console.log(data);
-        });
-      }
+      data: { id: $(this).attr("data-id") }
     });
   });
 </script>
